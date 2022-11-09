@@ -1,2 +1,3 @@
-# image_gallery_fullstack
-Fullstack project with react, express and firebase. 
+# image_gallery_fullstack 
+The digital souvenier
+Fullstack project with react, express and firebase.
