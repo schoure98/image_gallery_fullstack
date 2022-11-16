@@ -18,3 +18,12 @@ Database: Firebase
 11/08
 Base project setup using npx. 
 Added customized title, favicon for the application. 
+
+11/10
+configured the firebase database connectivity.
+
+11/12
+Validate the firebase configuration and connectivity by storing name and age to database.
+
+11/15
+Started working on Image uploadation and storing title, date,location, note all data to firestore.
