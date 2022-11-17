@@ -1,20 +1,21 @@
-import "./App.css";
-import About from "./Components/About";
-import FloatingButton from "./Components/FloatingButton";
-import Footer from "./Components/Footer";
-import Header from "./Components/Header";
+import React from 'react'
+import "./App.css"
+import Header from './Components/Header'
+import SearchBar from './Components/SearchBar/SearchBar'
+import FloatingButton from './Components/FloatingButton/FloatingButton'
+import Footer from './Components/Footer/Footer'
 
-import SearchBar from "./Components/SearchBar";
 
+function App() {
   return (
-    <div className="App">
+    <div>
       <Header />
       <SearchBar />
-      <About />
       <FloatingButton />
       <Footer />
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
