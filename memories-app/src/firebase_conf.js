@@ -1,5 +1,8 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp } from 'firebase/app';
 import { getFirestore } from "@firebase/firestore";
+import { getStorage } from "firebase/storage";
+
+
 const firebaseConfig = {
     apiKey: "AIzaSyCdGz4vZzNzam-MboDEN3fQ-tN1gDH8Kcw",
     authDomain: "digital-souvenir.firebaseapp.com",
@@ -10,6 +13,8 @@ const firebaseConfig = {
     measurementId: "G-83L06NYZ9Z"
   };
 
-const app = initializeApp(firebaseConfig);
 
-export const db = getFirestore(app);
+  // Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const firestore = getFirestore(app);
+export const storage = getStorage(app);
