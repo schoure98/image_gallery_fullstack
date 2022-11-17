@@ -6,7 +6,7 @@ function Header() {
   return (
     <div>
       <header>
-        <img src={background} alt="logo" width="14%" />
+        <img src={logo} alt="logo" width="20%" />
       </header>
     </div>
   );
