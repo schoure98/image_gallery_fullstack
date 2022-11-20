@@ -32,7 +32,7 @@ function App() {
     const imageRef = ref(storage, `images/${imageUpload.name + v4()}`);
     uploadBytes(imageRef, imageUpload).then((snapshot) => {
       getDownloadURL(snapshot.ref).then((url) => {
-        setImageUrls((prev) => [...prev, url]);
+        firestore.collection("notes").doc(notes.name).set(image = url);
         //Code for uploading to firestore
         
         //alert(url);

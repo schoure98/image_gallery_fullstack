@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import UserNotes from './UserNotes';
+import UserNotes from './UserNotes.js';
 import reportWebVitals from './reportWebVitals';
 //import App from './App';
-
+//import FormTest from './formtest';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserNotes/>    
+    <UserNotes />
   </React.StrictMode>
 );
 

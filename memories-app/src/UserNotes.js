@@ -3,29 +3,24 @@ import "./UserNotes.css";
 import ImageUpload from "./ImageUpload";
 import { storage } from "./firebase_conf";
 import { firestore } from "./firebase_conf";
-import {
-    ref,
-    uploadBytesResumable,
-    getDownloadURL 
-} from "firebase/storage";
-//import firebase from "firebase";
+import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { doc, setDoc } from "firebase/firestore";
 
 function UsersCollectionRef() {
-  const db = firestore;
-  //const firestorage = storage;
-
-  const [data, setData] = useState({
+  const [formData, setFromData] = useState({
     Title: "",
     Location: "",
     Date: "",
     Caption: "",
     image: null,
   });
+  const [image, setImage] = useState();
 
   function HandleChange(e) {
     e.preventDefault();
     const { name, value } = e.target;
-    setData((prev) => {
+    console.log(name, value);
+    setFromData((prev) => {
       return { ...prev, [name]: value };
     });
   }
@@ -33,8 +28,15 @@ function UsersCollectionRef() {
   function NoteUpload(e) {
     e.preventDefault();
 
-    //const uploadTask = ref(storage, `noteImages/ ${data.image.name}`).put(`${data.image}`);
-    const uploadTask = ref(storage, `noteImages/ ${data.image.name}`).put(`${data.image}`);
+    console.log("start of Image upload");
+    console.log(image);
+    // async magic goes here...
+    if (image.name === null) {
+      console.error(`not an image, the image file is a ${typeof image.name}`);
+    }
+    //Uploading image into storage.
+    const storageRef = ref(storage, `/images/${image.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, image);
 
     uploadTask.on(
       "state_changed",
@@ -47,31 +49,26 @@ function UsersCollectionRef() {
         console.log(err);
       },
       () => {
-        storage
-          .ref("noteImages")
-          .child(data.image.name)
-          .getDownloadURL()
-          .then((imageUrl) => {
-            firestore
-              .collection("NotesData")
-              .doc(data.name)
-              .set({
-                Title: data.Title,
-                Location: data.Location,
-                Date: data.Date,
-                Caption: data.Caption,
-                image: imageUrl,
-              })
-              .then(() => {
-                setData({
-                  Title: "",
-                  Location: "",
-                  Date: "",
-                  Caption: "",
-                  image: null,
-                });
-              });
+        const imagefile = ref(storage, `/images/${image.name}`);
+        getDownloadURL(imagefile).then((imageUrl) => {
+          setDoc(doc(firestore, "NotesData", formData.Title), {
+            Title: formData.Title,
+            Location: formData.Location,
+            Date: formData.Date,
+            Caption: formData.Caption,
+            image: imageUrl,
           });
+        });
+        // rest form
+        setFromData({
+          Title: "",
+          Location: "",
+          Date: "",
+          Caption: "",
+          image: null,
+        });
+        setImage(null);
+        window.location.reload();
       }
     );
   }
@@ -85,28 +82,28 @@ function UsersCollectionRef() {
               onChange={HandleChange}
               placeholder="Title"
               name="Title"
-              value={data.Title}
+              value={formData.Title}
             ></input>
             <input
               type="text"
               onChange={HandleChange}
               placeholder="location"
               name="Location"
-              value={data.Location}
+              value={formData.Location}
             ></input>
             <input
               type="date"
               onChange={HandleChange}
               placeholder="date"
               name="Date"
-              value={data.Date}
+              value={formData.Date}
             ></input>
             <input
               type="text"
               onChange={HandleChange}
               placeholder="Caption"
               name="Caption"
-              value={data.Caption}
+              value={formData.Caption}
             ></input>
             <button style={{ marginTop: "10px" }} onClick={NoteUpload}>
               {" "}
@@ -117,7 +114,7 @@ function UsersCollectionRef() {
         <div className="overlay-container">
           <div className="overlay">
             <div className="overlay-panel overlay-right">
-              <ImageUpload setData = {setData} />
+              <ImageUpload image={image} setImage={setImage} />
             </div>
           </div>
         </div>
