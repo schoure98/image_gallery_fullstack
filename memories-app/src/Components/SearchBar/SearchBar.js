@@ -1,6 +1,7 @@
 import React from "react";
 import "../SearchBar/SearchBar.css";
 
+
 import "../SearchBar/SearchBar.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,7 +14,11 @@ function SearchBar() {
   const autoCompleteRef = useRef();
   const inputRef = useRef();
   const options = {
+
     componentRestrictions: { country: "usa" },
+
+    componentRestrictions: { country: "us" },
+
 
     componentRestrictions: { country: "us" },
 

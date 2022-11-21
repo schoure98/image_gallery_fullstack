@@ -1,13 +1,13 @@
 .image-upload__preview {
-  width: 16rem;
-  height: 16rem;
+  width: 20rem;
+  height: 20rem;
   border: 1px solid rgb(164, 111, 111);
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   clip-path: circle(50% at 50% 50%);
 }
 
