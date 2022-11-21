@@ -9,7 +9,11 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 import HomePage from "./Pages/Home/HomePage";
 import InputMemory from "./Pages/InputMemory/InputMemory";
+
 import MemoryCard from "./Components/MemoryCards";
+
+import MemoryCard from './Components/MemoryCard';
+
 
 
 function App() {
