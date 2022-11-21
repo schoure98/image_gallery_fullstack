@@ -73,7 +73,7 @@ const MemoryCard = () => {
                                 <Card.Header style={{ marginTop: "40px"}}>
                                     {item.Title}
                                 </Card.Header>
-                                <Card.Description>{item.Caption}</Card.Description>
+                                
                             </Card.Content>
                             <Card.Content extra>
                                 <div>
@@ -95,15 +95,31 @@ const MemoryCard = () => {
                                             {...notedata}
                                         />
                                     )}
+                                    <br>
+                                    </br>
                                 </div>
                             </Card.Content>
 
                         </Card>
                     </Grid.Column>
+
                 ))}
             </Grid>
         </Card.Group>
+        <div>
+            <br>
+            </br>
+            <br>
+            </br>
+            <br>
+            </br>
+            <br>
+            </br>
+            <br>
+            </br>
+        </div>
     </Container>
+    
   )
 }
 

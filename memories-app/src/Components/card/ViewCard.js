@@ -12,8 +12,11 @@ const ViewCard = ({ setOpen, open, image, Title, Location, Date, Caption, id, ha
 
     return (
 
-    <Modal
-    size={"small"}
+    <Modal style={{height: "580px",
+                   marginTop: "8%",
+                   marginLeft: "20%",
+                   marginRight: "20%"}}
+    size={"big"}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
@@ -24,25 +27,25 @@ const ViewCard = ({ setOpen, open, image, Title, Location, Date, Caption, id, ha
         <Modal.Content image>
             <Image
             src={image}  
-            size='medium' 
+            size='large' 
             style={{
-                height: "300px",
-                Width: "300px",
+                height: "400px",
+                Width: "200px",
                 borderRadius: "0",
             }}
             wrapped />
             <Modal.Description>
                 <Header>
-                    {Title}
+                    <h3>Title : {Title} </h3>
                 </Header>
                 <p>
-                    {Location}
+                    Location : {Location}
                 </p>
                 <p>
-                    {Date}
+                    Date: {Date}
                 </p>
                 <p>
-                    {Caption}
+                    Quote : {Caption}
                 </p>
             </Modal.Description>
         </Modal.Content>
