@@ -1,6 +1,8 @@
 import React from "react";
 import "../SearchBar/SearchBar.css";
+
 import "../SearchBar/SearchBar.css";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
@@ -12,6 +14,9 @@ function SearchBar() {
   const inputRef = useRef();
   const options = {
     componentRestrictions: { country: "usa" },
+
+    componentRestrictions: { country: "us" },
+
     fields: ["address_components", "geometry", "icon", "name"],
     types: ["establishment"],
   };
