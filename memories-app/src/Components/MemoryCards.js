@@ -70,13 +70,19 @@ const MemoryCard = () => {
                                     borderRadius: "0%",
                                 }}
                                 />
-                                <Card.Header style={{ marginTop: "40px"}}>
+                                <Card.Header style={{ marginTop: "10px", display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"}}>
                                     {item.Title}
                                 </Card.Header>
                                 
                             </Card.Content>
                             <Card.Content extra>
-                                <div>
+                                <div style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    justifyContent: "center"
+                                }}>
                                     <Button color="Green"
                                         onClick={() => handleUpdate(item)}
                                     >

@@ -12,7 +12,7 @@ const ViewCard = ({ setOpen, open, image, Title, Location, Date, Caption, id, ha
 
     return (
 
-    <Modal style={{height: "580px",
+    <Modal style={{height: "400px",
                    marginTop: "8%",
                    marginLeft: "20%",
                    marginRight: "20%"}}
@@ -29,8 +29,6 @@ const ViewCard = ({ setOpen, open, image, Title, Location, Date, Caption, id, ha
             src={image}  
             size='large' 
             style={{
-                height: "400px",
-                Width: "200px",
                 borderRadius: "0",
             }}
             wrapped />
