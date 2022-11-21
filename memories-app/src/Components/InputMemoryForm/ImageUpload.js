@@ -3,13 +3,11 @@ import "./ImageUpload.css";
 import { Button } from "react-bootstrap";
 import { MdModeEdit } from "react-icons/md";
 
-
 const ImageUpload = ({ image, setImage }) => {
   const [previewUrl, setpreviewUrl] = useState();
   const filePickerRef = useRef();
 
   useEffect(() => {
-
     if (!image) {
       setpreviewUrl(null);
       return;
