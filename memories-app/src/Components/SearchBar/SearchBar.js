@@ -10,7 +10,7 @@ function SearchBar() {
   const autoCompleteRef = useRef();
   const inputRef = useRef();
   const options = {
-    componentRestrictions: { country: "us" },
+    componentRestrictions: { country: "usa" },
     fields: ["address_components", "geometry", "icon", "name"],
     types: ["establishment"],
   };
@@ -35,5 +35,4 @@ function SearchBar() {
     </div>
   );
 }
-
 export default SearchBar;
