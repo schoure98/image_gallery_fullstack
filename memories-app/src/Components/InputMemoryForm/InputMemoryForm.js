@@ -8,6 +8,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomePage from "../../Pages/Home/HomePage";
 import { useNavigate } from "react-router-dom";
+import MemoryCard from "../MemoryCards";
 
 function InputMemoryForm() {
   const navigate = useNavigate();
@@ -103,9 +104,11 @@ function InputMemoryForm() {
             Caption: formData.Caption,
             image: imageUrl,
           });
-          toast.success("Successly Uploaded !", {
-            position: toast.POSITION.TOP_CENTER,
-          });
+          toast
+            .success("Successly Uploaded !", {
+              position: toast.POSITION.TOP_CENTER,
+            })
+            .then(navigate("./memoryCard"));
         });
 
         // rest form
@@ -124,7 +127,7 @@ function InputMemoryForm() {
     <div className="user-note-collection-main">
       <div className="container" id="container">
         <div className="form-container collection-container">
-          <form action="#">
+          <form>
             <input
               type="text"
               onChange={HandleChange}
@@ -158,9 +161,10 @@ function InputMemoryForm() {
               error={errors.Caption ? { content: errors.Caption } : null}
             ></input>
             <button
+              type="submit"
               style={{ marginTop: "10px" }}
               onClick={NoteUpload}
-              disabled={progress < 100 && progress !== null && errors !== false}
+              disabled={progress > 100 && progress !== null && errors !== false}
             >
               {" "}
               Submit
