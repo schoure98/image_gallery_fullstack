@@ -12,10 +12,6 @@ import InputMemory from "./Pages/InputMemory/InputMemory";
 
 import MemoryCard from "./Components/MemoryCards";
 
-import MemoryCard from './Components/MemoryCard';
-
-
-
 function App() {
   return (
     <BrowserRouter>

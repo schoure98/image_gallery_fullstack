@@ -5,7 +5,7 @@ import SearchBar from '../../Components/SearchBar/SearchBar'
 const HomePage = () => {
   return (
     <div>
-        {/* <SearchBar /> */}
+        <SearchBar />
         <FloatingButton />
     </div>
   )
