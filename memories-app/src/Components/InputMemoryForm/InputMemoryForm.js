@@ -20,6 +20,7 @@ function InputMemoryForm() {
     Caption: "",
     image: null,
   });
+
   const [image, setImage] = useState();
 
   function HandleChange(e) {
@@ -122,7 +123,7 @@ function InputMemoryForm() {
               name="Caption"
               value={formData.Caption}
             ></input>
-            <button style={{ marginTop: "10px" }} onClick={NoteUpload}>
+            <button type="submit" style={{ marginTop: "10px" }} onClick={NoteUpload}>
               {" "}
               Submit
             </button>
