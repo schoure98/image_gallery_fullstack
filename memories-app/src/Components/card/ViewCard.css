@@ -1,0 +1,16 @@
+.modal {
+    justify-content: center;
+    align-items: center;
+    height: 530px;
+    width: 400px;
+}
+.modalcard {
+    background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
+  position: relative;
+  overflow: hidden;
+  width: 500px;
+  max-width: 80%;
+  min-height: 400px;
+}
