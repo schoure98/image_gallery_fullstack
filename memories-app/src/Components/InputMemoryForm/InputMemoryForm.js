@@ -18,6 +18,7 @@ function InputMemoryForm() {
     Caption: "",
     image: null,
   });
+
   const [image, setImage] = useState();
   const [errors, setErrors] = useState(false);
   const [isSubmit, setIsSubmit] = useState();
@@ -157,11 +158,15 @@ function InputMemoryForm() {
               value={formData.Caption}
               error={errors.Caption ? { content: errors.Caption } : null}
             ></input>
+
             <button
               style={{ marginTop: "10px" }}
               onClick={NoteUpload}
               disabled={progress < 100 && progress !== null && errors !== false}
             >
+
+            <button type="submit" style={{ marginTop: "10px" }} onClick={NoteUpload}>
+
               {" "}
               Submit
             </button>

@@ -7,6 +7,13 @@ import Footer from "./Components/Footer/Footer";
 import { BrowserRouter } from "react-router-dom";
 import { Route, Routes, Navigate } from "react-router-dom";
 
+
+
+import HomePage from "./Pages/Home/HomePage";
+import InputMemory from "./Pages/InputMemory/InputMemory";
+import MemoryCard from './Components/MemoryCard';
+
+
 import HomePage from "./Pages/Home/HomePage";
 import InputMemory from "./Pages/InputMemory/InputMemory";
 import MemoryCard from "./Components/MemoryCards";
