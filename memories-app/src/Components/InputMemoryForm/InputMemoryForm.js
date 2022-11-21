@@ -7,9 +7,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomePage from "../../Pages/Home/HomePage";
-import {
-  useNavigate,
-} from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 
 function InputMemoryForm() {
   const navigate = useNavigate();
@@ -21,6 +19,9 @@ function InputMemoryForm() {
     image: null,
   });
   const [image, setImage] = useState();
+  const [errors, setErrors] = useState(false);
+  const [isSubmit, setIsSubmit] = useState();
+  const [progress, setProgress] = useState(null);
 
   function HandleChange(e) {
     e.preventDefault();
@@ -29,20 +30,40 @@ function InputMemoryForm() {
       return { ...prev, [name]: value };
     });
   }
-  const showToastMessage = () => {
-    toast.success("Success Notification !", {
-      position: toast.POSITION.TOP_CENTER,
-    });
-  };
+
   const CancelForm = () => {
     // 👇️ navigate programmatically
-    navigate('/');
+    navigate("/");
+  };
+  const validate = () => {
+    let errors = {};
+    if (!formData.Title) {
+      console.log("Title is Required");
+      errors.Title = "Title is Required";
+      setErrors(true);
+    }
+    if (!formData.Location) {
+      console.log("Location is Required");
+      errors.Location = "Location is Required";
+      setErrors(true);
+    }
+    if (!formData.Date) {
+      console.log("Date is Required");
+      errors.Date = "Date is Required";
+      setErrors(true);
+    }
+
+    return errors;
   };
   function NoteUpload(e) {
     e.preventDefault();
-
+    console.log("Inside noteupload");
+    let errors = validate();
+    if (Object.keys(errors).length) return setErrors(errors);
+    console.log(errors);
     console.log("start of Image upload");
     console.log(image);
+
     // async magic goes here...
     if (image.name === null) {
       console.error(`not an image, the image file is a ${typeof image.name}`);
@@ -56,9 +77,20 @@ function InputMemoryForm() {
       (snapshot) => {
         let progress;
         progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(progress);
+        setProgress(progress);
+        switch (snapshot.state) {
+          case "paused":
+            console.log("upload is paused");
+            break;
+          case "running":
+            console.log("upload is running");
+            break;
+          default:
+            break;
+        }
       },
       (err) => {
+        validate();
         console.log(err);
       },
       async () => {
@@ -72,9 +104,8 @@ function InputMemoryForm() {
             image: imageUrl,
           });
           toast.success("Successly Uploaded !", {
-            position: toast.POSITION.TOP_RIGHT,
+            position: toast.POSITION.TOP_CENTER,
           });
-          console.log("Setting setDoc");
         });
 
         // rest form
@@ -100,6 +131,7 @@ function InputMemoryForm() {
               placeholder="Title"
               name="Title"
               value={formData.Title}
+              error={errors.Title ? { content: errors.Title } : null}
             ></input>
             <input
               type="text"
@@ -107,6 +139,7 @@ function InputMemoryForm() {
               placeholder="location"
               name="Location"
               value={formData.Location}
+              error={errors.Location ? { content: errors.Location } : null}
             ></input>
             <input
               type="date"
@@ -114,6 +147,7 @@ function InputMemoryForm() {
               placeholder="date"
               name="Date"
               value={formData.Date}
+              error={errors.Date ? { content: errors.Date } : null}
             ></input>
             <input
               type="text"
@@ -121,17 +155,20 @@ function InputMemoryForm() {
               placeholder="Caption"
               name="Caption"
               value={formData.Caption}
+              error={errors.Caption ? { content: errors.Caption } : null}
             ></input>
-            <button style={{ marginTop: "10px" }} onClick={NoteUpload}>
+            <button
+              style={{ marginTop: "10px" }}
+              onClick={NoteUpload}
+              disabled={progress < 100 && progress !== null && errors !== false}
+            >
               {" "}
               Submit
             </button>
-            <button style={{ marginTop: "10px" }} 
-            onClick={CancelForm}>
+            <button style={{ marginTop: "10px" }} onClick={CancelForm}>
               {" "}
               Cancel
             </button>
-
           </form>
         </div>
         <div className="overlay-container">
