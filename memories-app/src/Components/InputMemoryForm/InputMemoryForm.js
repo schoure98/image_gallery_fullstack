@@ -90,7 +90,7 @@ function InputMemoryForm() {
   }
   return (
     <div className="user-note-collection-main">
-      <div className="container" id="container">
+      <div className="input-form-container" id="container">
         <div className="form-container collection-container">
           <form action="#">
             <input

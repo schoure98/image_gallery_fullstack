@@ -14,6 +14,7 @@ import MemoryCard from "./Components/MemoryCards";
 
 function App() {
   return (
+    
     <BrowserRouter>
       <Header />
       <Routes>
@@ -24,6 +25,7 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter>
+    
   );
 }
 

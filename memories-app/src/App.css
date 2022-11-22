@@ -1,6 +1,5 @@
-* {
-  box-sizing: border-box;
-}
+
+/*
 .App {
   width: 100vw;
   height: auto;
@@ -9,13 +8,26 @@
   flex-direction: column;
 }
 
-img {
-  width: 300px;
-  margin: 10px;
-}
-/* Header */
+Header 
 header {
   text-align: center;
   width: 100%;
   top: 0;
+}
+*/
+
+.logo {
+    max-height: 100px;
+    margin-top: -9%;
+}
+
+.navbar {
+  padding: 10px; 
+}
+.nav-link, .navbar-text {
+  font-family: 'Roboto';
+  font-size: 20px !important;
+  font-weight: 800;
+  color: #0A5C8F !important;
+
 }
