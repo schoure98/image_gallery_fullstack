@@ -21,12 +21,11 @@ const ViewCard = ({
 
   return (
     <Modal
-      className="ViewCardModel"
       style={{
         height: "400px",
         marginTop: "8%",
         marginLeft: "20%",
-        marginRight: "20%",
+        marginRight: "0%",
       }}
       size={"big"}
       onClose={() => setOpen(false)}

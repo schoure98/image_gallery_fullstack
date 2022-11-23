@@ -38,7 +38,7 @@ const MemoryCard = () => {
     setOpen(true);
     setNotedate(cardItem);
   };
-  const handleDelete = async (id) => {
+  const deleteHandle = async (id) => {
     if (window.confirm("Are you sure to Delete the Card ?")) {
       try {
         setOpen(false);
@@ -104,7 +104,7 @@ const MemoryCard = () => {
                         <ViewCard
                           open={open}
                           setOpen={setOpen}
-                          handleDelete={handleDelete}
+                          handleDelete={deleteHandle}
                           {...notedata}
                         />
                       )}
