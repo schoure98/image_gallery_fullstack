@@ -2,36 +2,37 @@ import React, { useState, useEffect, useRef } from "react";
 import "./ImageUpload.css";
 import { Button } from "react-bootstrap";
 import { MdModeEdit } from "react-icons/md";
+import { IoMdPhotos } from "react-icons/io";
 
 const ImageUpload = ({ image, setImage }) => {
-  const [previewUrl, setpreviewUrl] = useState();
-  const filePickerRef = useRef();
+  const imageFileRef = useRef();
+  const [imagePreview, setimagePreview] = useState();
 
   useEffect(() => {
     if (!image) {
-      setpreviewUrl(null);
+      setimagePreview(null);
       return;
     }
     const fileReader = new FileReader();
     fileReader.onload = () => {
-      setpreviewUrl(fileReader.result);
+      setimagePreview(fileReader.result);
     };
     fileReader.readAsDataURL(image);
   }, [image]);
 
-  function pickedHandler(event) {
-    let pickedImage;
+  function selectedImageHandler(event) {
+    let selectedImage;
     if (event.target.files && event.target.files.length === 1) {
-      pickedImage = event.target.files[0];
-      setImage(pickedImage);
+      selectedImage = event.target.files[0];
+      setImage(selectedImage);
     }
   }
-  function pickedImageHandler(event) {
-    filePickerRef.current.click();
-    let pickedImage;
+  function imageSelectHandler(event) {
+    imageFileRef.current.click();
+    let selectedImage;
     if (event.target.files && event.target.files.length === 1) {
-      pickedImage = event.target.files[0];
-      setImage(pickedImage);
+      selectedImage = event.target.files[0];
+      setImage(selectedImage);
       console.log("pickedImageHandler");
     }
   }
@@ -39,38 +40,35 @@ const ImageUpload = ({ image, setImage }) => {
   return (
     <div className="user-note-collection-main cent">
       <input
-        ref={filePickerRef}
+        ref={imageFileRef}
         style={{ display: "none" }}
         type="file"
         accept=".jpg,.png,.jpeg"
-        onChange={pickedHandler}
+        onChange={selectedImageHandler}
       />
+
       <div className={`image-upload ${"center"}`}>
         <div className="image-upload__preview">
-          {previewUrl && <img src={previewUrl} alt="preview" />}
-          {!previewUrl && (
+          <div>{imagePreview && <img src={imagePreview} alt="preview" />}</div>
+          {!imagePreview && (
             <div className="center">
-              <Button
-                className="image-upload-button"
-                type="button"
-                onClick={pickedImageHandler}
-              >
-                {" "}
-                +{" "}
-              </Button>
+              <div>
+                <h4> Add Photo </h4>
+                <IoMdPhotos
+                  className="icon2"
+                  onClick={imageSelectHandler}
+                ></IoMdPhotos>
+              </div>
             </div>
           )}
         </div>
         <div>
-          {previewUrl && (
+          {imagePreview && (
             <div className="center">
-              <Button
-                className="image-upload-button"
-                type="button"
-                onClick={pickedImageHandler}
-              >
-                <MdModeEdit className="icon"></MdModeEdit>
-              </Button>
+              <MdModeEdit
+                className="icon"
+                onClick={imageSelectHandler}
+              ></MdModeEdit>
             </div>
           )}
         </div>

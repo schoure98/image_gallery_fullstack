@@ -8,6 +8,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import HomePage from "../../Pages/Home/HomePage";
 import { useNavigate } from "react-router-dom";
+import { IoMdPhotos } from "react-icons";
+import { MdLocationOn } from "react-icons";
 
 function InputMemoryForm() {
   const navigate = useNavigate();
@@ -60,6 +62,7 @@ function InputMemoryForm() {
       (err) => {
         console.log(err);
       },
+      //started upload data process to firestorage
       async () => {
         const imagefile = ref(storage, `/images/${image.name}`);
         getDownloadURL(imagefile).then((imageUrl) => {
@@ -91,6 +94,15 @@ function InputMemoryForm() {
   return (
     <div className="user-note-collection-main">
       <div className="input-form-container" id="container">
+        <div className="image-container">
+          <div className="image">
+            <div className="image-panel image-left">
+              <ImageUpload image={image} setImage={setImage} />
+              <ToastContainer />
+            </div>
+          </div>
+        </div>
+
         <div className="form-container collection-container">
           <form action="#">
             <input
@@ -100,13 +112,15 @@ function InputMemoryForm() {
               name="Title"
               value={formData.Title}
             ></input>
+            <br></br>
             <input
-              type="text"
+              type="location"
               onChange={HandleChange}
               placeholder="location"
               name="Location"
               value={formData.Location}
             ></input>
+            <br></br>
             <input
               type="date"
               onChange={HandleChange}
@@ -114,13 +128,16 @@ function InputMemoryForm() {
               name="Date"
               value={formData.Date}
             ></input>
-            <input
-              type="text"
+            <br></br>
+            <textarea
+              type="textarea"
               onChange={HandleChange}
               placeholder="Caption"
               name="Caption"
               value={formData.Caption}
-            ></input>
+            ></textarea>
+            <br></br>
+
             <button
               type="submit"
               style={{ marginTop: "10px" }}
@@ -134,14 +151,6 @@ function InputMemoryForm() {
               Cancel
             </button>
           </form>
-        </div>
-        <div className="overlay-container">
-          <div className="overlay">
-            <div className="overlay-panel overlay-right">
-              <ImageUpload image={image} setImage={setImage} />
-              <ToastContainer />
-            </div>
-          </div>
         </div>
       </div>
     </div>
