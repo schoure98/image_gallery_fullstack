@@ -35,41 +35,43 @@ const MemoryCard = () => {
   const handleDelete = async (id) => {};
   const handleview = (item) => {};
   return (
-    <Container>
-      <Card.Group>
-        <Grid columns={3} stackable>
-          {formdata &&
-            formdata.map((item) => (
-              <Grid.Column>
-                <Card key={item.id}>
-                  <Card.Content>
-                    <Image
-                      src={item.image}
-                      size="medium"
-                      style={{
-                        height: "150px",
-                        Width: "150px",
-                        borderRadius: "0%",
-                      }}
-                    />
-                    <Card.Header style={{ marginTop: "20px" }}>
-                      {item.Title}
-                    </Card.Header>
-                    <Card.Description>{item.Caption}</Card.Description>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <div>
-                      <Button color="purple" onClick={() => handleview(item)}>
-                        View
-                      </Button>
-                    </div>
-                  </Card.Content>
-                </Card>
-              </Grid.Column>
-            ))}
-        </Grid>
-      </Card.Group>
-    </Container>
+    <div class="image-grid">
+      <Container>
+        <Card.Group>
+          <Grid columns={3} stackable>
+            {formdata &&
+              formdata.map((item) => (
+                <Grid.Column>
+                  <Card key={item.id}>
+                    <Card.Content>
+                      <Image
+                        src={item.image}
+                        size="medium"
+                        style={{
+                          height: "150px",
+                          Width: "150px",
+                          borderRadius: "0%",
+                        }}
+                      />
+                      <Card.Header style={{ marginTop: "20px" }}>
+                        {item.Title}
+                      </Card.Header>
+                      <Card.Description>{item.Caption}</Card.Description>
+                    </Card.Content>
+                    <Card.Content extra>
+                      <div>
+                        <Button color="purple" onClick={() => handleview(item)}>
+                          View
+                        </Button>
+                      </div>
+                    </Card.Content>
+                  </Card>
+                </Grid.Column>
+              ))}
+          </Grid>
+        </Card.Group>
+      </Container>
+    </div>
   );
 };
 
