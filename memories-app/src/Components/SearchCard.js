@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import "../Components/SearchBar/SearchBar.css";
 import { firestore } from "../firebase_conf";
-import { doc, getDocs, query, where, collection } from "firebase/firestore";
+import { doc, getDocs, query, where, collection,deleteDoc } from "firebase/firestore";
 import { async } from "@firebase/util";
 import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { IoMdSearch } from "react-icons/io";
 import "../Components/SearchCard.css";
 import ViewCard from "../Components/card/ViewCard";
+//import { Card } from "react-bootstrap";
+
 
 const SearchCard = () => {
   const [searchdata, setSearchdata] = useState(null);
@@ -41,11 +43,21 @@ const SearchCard = () => {
       console.log("Error getting cached document:", e);
     }
   };
+  const deleteHandle = async (id) => {
+    if (window.confirm("Are you sure to Delete the Card ?")) {
+      try {
+        setOpen(false);
+        await deleteDoc(doc(firestore, "NotesData", id));
+        setFormdata(formdata.filter((notedata) => notedata.id !== id));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  };
   return (
     <div>
-      <div className="search-card">
-     
-          <input
+      <div className="form">
+          <input className="nosubmit"
             class="nosubmit"
             id="search_input"
             type="search"
@@ -54,25 +66,24 @@ const SearchCard = () => {
             value={searchdata}
           />
           <IoMdSearch className="icon" onClick={SearchvalueHandle}></IoMdSearch>
-        
-        <br></br>
-        <br></br>
       </div>
-
+      <br>
+      </br>
+      <div className="cardDisplay">
       <Container>
       <Card.Group>
         <Grid columns="three" stackable>
           {formdata &&
             formdata.map((cardItem) => (
               <Grid.Column>
-                <Card key={cardItem.id}>
+                <Card key={cardItem.id} style={{ width: '60rem', height: 'auto' }}>
                   <Card.Content>
                     <Image
                       src={cardItem.image}
-                      size="big"
+                      size="large"
                       style={{
-                        height: "100px",
-                        Width: "350px",
+                        height: "150px",
+                        Width: "150px",
                         borderRadius: "0%",
                       }}
                     />
@@ -95,9 +106,12 @@ const SearchCard = () => {
                         justifyContent: "center",
                       }}
                     >
+                      
                       <Button
                         color="purple"
                         onClick={() => handleview(cardItem)}
+                        handleDelete={deleteHandle}
+                          {...notedata}
                       >
                         View
                       </Button>
@@ -105,6 +119,7 @@ const SearchCard = () => {
                         <ViewCard
                           open={open}
                           setOpen={setOpen}
+                          handleDelete={deleteHandle}
                           {...notedata}
                         />
                       )}
@@ -116,16 +131,11 @@ const SearchCard = () => {
             ))}
         </Grid>
       </Card.Group>
-      <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+      </Container>
       </div>
-    </Container>
+     
     </div>
-  );
+    );
 };
 
 export default SearchCard;

@@ -1,7 +1,31 @@
 .icon {
+  text-align: center;
+
   height: 40px;
-  width: 40px;
+  width: 40px; 
 }
 .search-card{
   justify-content: center;
+  text-align: center;
+}
+.form{
+  text-align: center;
+}
+
+.ui.container {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+
+}
+
+@media (max-width: 800px) {
+  .ui.container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.cardDisplay{
+  justify-content: center;
+  text-align: center;
 }
