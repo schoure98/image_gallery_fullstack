@@ -1,0 +1,61 @@
+.about {
+  padding-top: 4%;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Roboto';
+  color: #0A5C8F;
+  
+}
+.flex-container {
+  display: flex;
+  padding-bottom: 5%;
+}
+.flex-container > div {
+  margin: auto;
+}
+
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+.card {
+  width: 450px;
+  margin:auto;
+  text-align: center;
+  padding-top:10%;
+  padding-bottom: 10%;
+  margin-top: 5%;
+  border: 1px dotted  #0A5C8F;
+  
+}
+
+
+.icons{
+  text-align: center;
+}
+.icon {
+  margin-right: 5%;
+  font-size: 30px;
+  margin-top:2%;
+  margin-bottom: 2%;
+}
+.card-title {
+  font-size: 20px;
+}
+.card-text{
+  font-size: 16px;
+}
+.developer-img {
+  border-radius: 50%;
+  height: 200px;
+  max-width: 60%;
+  margin: auto;
+}
+
+#contact {
+  width: 200px;
+  background-color: #0A5C8F !important;
+  border: none;
+  padding: 3%;
+}

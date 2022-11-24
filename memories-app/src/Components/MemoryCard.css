@@ -1,5 +1,18 @@
 .memoryCards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
 }
+.ui.container {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+
+}
+
+@media (max-width: 800px) {
+    .ui.container {
+      flex-direction: column;
+      align-items: center;
+    }
+  }

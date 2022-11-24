@@ -1,6 +1,5 @@
 /* Footer Styling */
 footer {
-    position: fixed;
     width: 100%;
     bottom: 0%;
     text-align: center;
@@ -10,6 +9,7 @@ footer {
   }
   footer > p{
     padding-top: 1.5%;
+    padding-bottom: 1.5%;
   }
   footer > p > a {
     color: white;
