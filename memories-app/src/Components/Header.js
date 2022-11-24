@@ -15,7 +15,7 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/memoryCard">Album</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
+            <Nav.Link href="/searchCard">Search Memories </Nav.Link>
           </Nav>
           <Navbar.Text className="justify-content-end">Sign in</Navbar.Text>
         </Navbar.Collapse>

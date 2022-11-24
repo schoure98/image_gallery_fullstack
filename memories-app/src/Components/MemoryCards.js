@@ -38,6 +38,7 @@ const MemoryCard = () => {
     setOpen(true);
     setNotedate(cardItem);
   };
+
   const deleteHandle = async (id) => {
     if (window.confirm("Are you sure to Delete the Card ?")) {
       try {
@@ -89,7 +90,7 @@ const MemoryCard = () => {
                       }}
                     >
                       <Button
-                        color="Green"
+                        color="green"
                         onClick={() => handleUpdate(cardItem)}
                       >
                         Update

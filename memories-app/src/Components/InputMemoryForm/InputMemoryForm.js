@@ -95,7 +95,7 @@ function InputMemoryForm() {
     <div className="user-note-collection-main">
       <div className="input-form-container" id="container">
         <div className="image-container">
-          <div className="image">
+          <div className="div-image">
             <div className="image-panel image-left">
               <ImageUpload image={image} setImage={setImage} />
               <ToastContainer />
