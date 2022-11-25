@@ -1,44 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { storage, firestore } from "../firebase_conf";
-import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
-import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
-import ViewCard from "./card/ViewCard";
+import React from "react";
+import { useState } from "react";
+import "../Components/SearchBar/SearchBar.css";
+import { firestore } from "../firebase_conf";
+import { doc, getDocs, query, where, collection,deleteDoc } from "firebase/firestore";
 import { async } from "@firebase/util";
+import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
+import { IoMdSearch } from "react-icons/io";
+import "../Components/SearchCard.css";
+import ViewCard from "../Components/card/ViewCard";
+//import { Card } from "react-bootstrap";
 
-const MemoryCard = () => {
+
+const SearchCard = () => {
+  const [searchdata, setSearchdata] = useState(null);
+  const [searchValue, setSearchValue] = useState(false);
   const [formdata, setFormdata] = useState([]);
-  const [notedata, setNotedate] = useState({});
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [notedata, setNotedate] = useState({});
 
-  useEffect(() => {
-    setLoading(true);
-    const DisplayData = onSnapshot(
-      collection(firestore, "NotesData"),
-      (snapshot) => {
-        let CardList = [];
-        snapshot.docs.forEach((doc) => {
-          CardList.push({ id: doc.id, ...doc.data() });
-        });
-        setFormdata(CardList);
-        setLoading(false);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-    return () => {
-      DisplayData();
-    };
-  }, []);
-
+  const SearchHandle = (e) => {
+    e.preventDefault();
+    setSearchdata(e.target.value);
+    setSearchValue(false);
+  };
   const handleview = (cardItem) => {
     setOpen(true);
     setNotedate(cardItem);
   };
-
+  const SearchvalueHandle = async (e) => {
+    e.preventDefault();
+    const docRef = collection(firestore, "NotesData");
+    const q = query(docRef, where("Location", "==", `${searchdata}`));
+    try {
+      const doc = await getDocs(q);
+      let CardList = [];
+      doc.forEach((doc) => {
+        CardList.push(doc.data());
+        console.log("Cached document data:", doc.data());
+      });
+      setFormdata(CardList);
+    } catch (e) {
+      console.log("Error getting cached document:", e);
+    }
+  };
   const deleteHandle = async (id) => {
     if (window.confirm("Are you sure to Delete the Card ?")) {
       try {
@@ -50,20 +54,33 @@ const MemoryCard = () => {
       }
     }
   };
-  const handleUpdate = () => {};
-
   return (
-    <Container>
+    <div>
+      <div className="form">
+          <input className="nosubmit"
+            class="nosubmit"
+            id="search_input"
+            type="search"
+            placeholder="Search..."
+            onChange={SearchHandle}
+            value={searchdata}
+          />
+          <IoMdSearch className="icon" onClick={SearchvalueHandle}></IoMdSearch>
+      </div>
+      <br>
+      </br>
+      <div className="cardDisplay">
+      <Container>
       <Card.Group>
         <Grid columns="three" stackable>
           {formdata &&
             formdata.map((cardItem) => (
               <Grid.Column>
-                <Card key={cardItem.id}>
+                <Card key={cardItem.id} style={{ width: '60rem', height: 'auto' }}>
                   <Card.Content>
                     <Image
                       src={cardItem.image}
-                      size="medium"
+                      size="large"
                       style={{
                         height: "150px",
                         Width: "150px",
@@ -89,15 +106,12 @@ const MemoryCard = () => {
                         justifyContent: "center",
                       }}
                     >
-                      <Button
-                        color="green"
-                        onClick={() => handleUpdate(cardItem)}
-                      >
-                        Update
-                      </Button>
+                      
                       <Button
                         color="purple"
                         onClick={() => handleview(cardItem)}
+                        handleDelete={deleteHandle}
+                          {...notedata}
                       >
                         View
                       </Button>
@@ -117,15 +131,11 @@ const MemoryCard = () => {
             ))}
         </Grid>
       </Card.Group>
-      <div>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
+      </Container>
       </div>
-    </Container>
-  );
+     
+    </div>
+    );
 };
 
-export default MemoryCard;
+export default SearchCard;

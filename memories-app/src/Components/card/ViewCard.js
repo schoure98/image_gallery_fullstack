@@ -1,6 +1,5 @@
 import React from "react";
 import { Modal, Header, Image, Button } from "semantic-ui-react";
-import { useNavigate } from "react-router-dom";
 import "./ViewCard.css";
 
 const ViewCard = ({
@@ -13,22 +12,18 @@ const ViewCard = ({
   open,
   id,
   handleDelete,
-}) => {
-  const navigate = useNavigate();
-  const CancelCard = () => {
-    navigate("/memoryCard");
-  };
+    }) => {
+ 
 
   return (
     <Modal
-      className="ViewCardModel"
       style={{
         height: "400px",
         marginTop: "8%",
         marginLeft: "20%",
-        marginRight: "20%",
+        marginRight: "0%",
       }}
-      size={"big"}
+      size={"small"}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
       open={open}
@@ -41,16 +36,21 @@ const ViewCard = ({
           size="large"
           style={{
             borderRadius: "0",
+            backgroundColor: "white",
+            zIndex: "1px"
           }}
           wrapped
         />
         <Modal.Description>
+            {console.log(Title, Location)}
           <Header>
             <h3>Title : {Title} </h3>
           </Header>
-          <h4>Location : {Location}</h4>
-          <h4>Date: {Date}</h4>
-          <h4>Caption : {Caption}</h4>
+          <Header>
+            <p>Location : {Location}</p>
+            <p>Date: {Date}</p>
+            <p>Caption : {Caption}</p>
+          </Header>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
@@ -64,7 +64,8 @@ const ViewCard = ({
           labelPosition="right"
           icon="checkmark"
           onClick={() => handleDelete(id)}
-        />
+        > Delete
+        </Button>
       </Modal.Actions>
     </Modal>
   );
