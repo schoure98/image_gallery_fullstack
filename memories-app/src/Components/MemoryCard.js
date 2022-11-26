@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { async } from "@firebase/util";
 
+
 const MemoryCard = () => {
   const [formdata, setFromdata] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -43,7 +44,7 @@ const MemoryCard = () => {
               formdata.map((item) => (
                 <Grid.Column>
                   <Card key={item.id}>
-                    <Card.Content>
+                    
                       <Image
                         src={item.image}
                         size="medium"
@@ -53,9 +54,11 @@ const MemoryCard = () => {
                           borderRadius: "0%",
                         }}
                       />
+                      <Card.Content>
                       <Card.Header style={{ marginTop: "20px" }}>
                         {item.Title}
                       </Card.Header>
+
                       <Card.Description>{item.Caption}</Card.Description>
                     </Card.Content>
                     <Card.Content extra>

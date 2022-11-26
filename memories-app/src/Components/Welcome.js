@@ -7,7 +7,7 @@ export default function Welcome() {
     <header style={{ paddingLeft: 0 }}>
       <div
         className="p-5 text-center bg-image welcome"
-        style={{ backgroundImage: `url(${background})`, height: 600 }}
+        style={{ backgroundImage: `url(${background})`, height: 600, opacity:0.9 }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
