@@ -3,8 +3,7 @@ import { storage, firestore } from "../firebase_conf";
 import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
-import ViewCard from "./card/ViewCard";
-import { async } from "@firebase/util";
+import ViewCard from "./Viewcard/ViewCard";
 
 const MemoryCard = () => {
   const [formdata, setFormdata] = useState([]);
@@ -34,11 +33,13 @@ const MemoryCard = () => {
     };
   }, []);
 
+  // function to View the memory card with all details 
   const handleview = (cardItem) => {
     setOpen(true);
     setNotedate(cardItem);
   };
 
+  // function for deletion function 
   const deleteHandle = async (id) => {
     if (window.confirm("Are you sure to Delete the Card ?")) {
       try {
@@ -50,7 +51,6 @@ const MemoryCard = () => {
       }
     }
   };
-  const handleUpdate = () => {};
 
   return (
     <Container>
@@ -89,12 +89,6 @@ const MemoryCard = () => {
                         justifyContent: "center",
                       }}
                     >
-                      <Button
-                        color="green"
-                        onClick={() => handleUpdate(cardItem)}
-                      >
-                        Update
-                      </Button>
                       <Button
                         color="purple"
                         onClick={() => handleview(cardItem)}

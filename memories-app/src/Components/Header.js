@@ -4,6 +4,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 
+
 function Header() {
   return (
     <Navbar expand="lg">
@@ -15,14 +16,13 @@ function Header() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/memoryCard">Album</Nav.Link>
-            <Nav.Link href="/searchCard">Search Memories </Nav.Link>
+            <Nav.Link href="/inputMemory"> Create Memories </Nav.Link>
+            <Nav.Link href="/searchCard"> Search Memories </Nav.Link>
           </Nav>
-          <Navbar.Text className="justify-content-end">Sign in</Navbar.Text>
         </Navbar.Collapse>
       </Container>
     </Navbar>
 
   );
 }
-
 export default Header;
