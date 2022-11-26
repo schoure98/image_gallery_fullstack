@@ -86,7 +86,8 @@ const MemoryCard = () => {
                       <span className="date">Date: {cardItem.Date}</span>
                       <br />
                       <span className="location">
-                        Location: {cardItem.Location}
+                        <FontAwesomeIcon icon="fa-sharp fa-solid fa-location-dot" />{" "}
+                        {cardItem.Location}
                       </span>
                     </Card.Meta>
                     <Card.Description>

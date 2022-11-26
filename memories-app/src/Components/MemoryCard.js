@@ -3,7 +3,7 @@ import { storage, firestore } from "../firebase_conf";
 import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MemoryCard = () => {
   const [formdata, setFormdata] = useState([]);
@@ -72,21 +72,26 @@ const MemoryCard = () => {
                     />
                     <Card.Header
                       style={{
-                        marginTop: "10px"
+                        marginTop: "10px",
                       }}
                     >
                       {cardItem.Title}
                       <br />
                     </Card.Header>
                     <Card.Meta
-                    style={{
-                      marginTop: "10px"
-                    }}>
-                      <span className="date">Date: {cardItem.Date}</span><br />
-                      <span className="location"><FontAwesomeIcon icon="fa-sharp fa-solid fa-location-dot" /> {cardItem.Location}</span>
+                      style={{
+                        marginTop: "10px",
+                      }}
+                    >
+                      <span className="date">Date: {cardItem.Date}</span>
+                      <br />
+                      <span className="location">
+                        <FontAwesomeIcon icon="fa-sharp fa-solid fa-location-dot" />{" "}
+                        {cardItem.Location}
+                      </span>
                     </Card.Meta>
                     <Card.Description>
-                     Description: {cardItem.Caption}
+                      Description: {cardItem.Caption}
                     </Card.Description>
                   </Card.Content>
                 </Card>
