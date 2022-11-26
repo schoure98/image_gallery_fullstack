@@ -19,7 +19,7 @@ function About() {
          <h4 class="about">Our Team</h4>
     <div class="flex-container">
       <div>
-        <MDBCard class="card">
+        <MDBCard class="card-component">
           <MDBCardImage
             class="developer-img"
             src={dev1}
@@ -47,7 +47,7 @@ function About() {
       </div>
 
       <div>
-        <MDBCard class="card">
+        <MDBCard class="card-component">
           <MDBCardImage
             class="developer-img"
             src={dev2}

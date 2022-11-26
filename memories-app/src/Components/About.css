@@ -20,7 +20,7 @@
     flex-direction: column;
   }
 }
-.card {
+.card-component {
   width: 450px;
   margin:auto;
   text-align: center;
