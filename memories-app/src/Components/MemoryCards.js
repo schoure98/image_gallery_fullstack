@@ -3,7 +3,8 @@ import { storage, firestore } from "../firebase_conf";
 import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ViewCard from "./card/ViewCard";
+import { async } from "@firebase/util";
 
 const MemoryCard = () => {
   const [formdata, setFormdata] = useState([]);
@@ -33,13 +34,11 @@ const MemoryCard = () => {
     };
   }, []);
 
-  // function to View the memory card with all details
   const handleview = (cardItem) => {
     setOpen(true);
     setNotedate(cardItem);
   };
 
-  // function for deletion function
   const deleteHandle = async (id) => {
     if (window.confirm("Are you sure to Delete the Card ?")) {
       try {
@@ -51,6 +50,7 @@ const MemoryCard = () => {
       }
     }
   };
+  const handleUpdate = () => {};
 
   return (
     <Container>
@@ -73,25 +73,44 @@ const MemoryCard = () => {
                     <Card.Header
                       style={{
                         marginTop: "10px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
                       {cardItem.Title}
-                      <br />
                     </Card.Header>
-                    <Card.Meta
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div
                       style={{
-                        marginTop: "10px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
-                      <span className="date">Date: {cardItem.Date}</span>
-                      <br />
-                      <span className="location">
-                        Location: {cardItem.Location}
-                      </span>
-                    </Card.Meta>
-                    <Card.Description>
-                      Description: {cardItem.Caption}
-                    </Card.Description>
+                      <Button
+                        color="green"
+                        onClick={() => handleUpdate(cardItem)}
+                      >
+                        Update
+                      </Button>
+                      <Button
+                        color="purple"
+                        onClick={() => handleview(cardItem)}
+                      >
+                        View
+                      </Button>
+                      {open && (
+                        <ViewCard
+                          open={open}
+                          setOpen={setOpen}
+                          handleDelete={deleteHandle}
+                          {...notedata}
+                        />
+                      )}
+                      <br></br>
+                    </div>
                   </Card.Content>
                 </Card>
               </Grid.Column>
