@@ -1,5 +1,5 @@
 import React from "react";
-import MemoryCard from "../../Components/MemoryCards";
+import MemoryCard from "../../Components/MemoryCard";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 
 const Memories = () => {
