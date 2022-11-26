@@ -3,7 +3,7 @@ import { storage, firestore } from "../firebase_conf";
 import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import ViewCard from "./Viewcard/ViewCard";
 
 const MemoryCard = () => {
   const [formdata, setFormdata] = useState([]);
@@ -73,26 +73,39 @@ const MemoryCard = () => {
                     <Card.Header
                       style={{
                         marginTop: "10px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
                       {cardItem.Title}
                       <br />
                     </Card.Header>
-                    <Card.Meta
+                  </Card.Content>
+                  <Card.Content extra>
+                    <div
                       style={{
-                        marginTop: "10px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                     >
-                      <span className="date">Date: {cardItem.Date}</span>
-                      <br />
-                      <span className="location">
-                        <FontAwesomeIcon icon="fa-sharp fa-solid fa-location-dot" />{" "}
-                        {cardItem.Location}
-                      </span>
-                    </Card.Meta>
-                    <Card.Description>
-                      Description: {cardItem.Caption}
-                    </Card.Description>
+                      <Button
+                        color="purple"
+                        onClick={() => handleview(cardItem)}
+                      >
+                        View
+                      </Button>
+                      {open && (
+                        <ViewCard
+                          open={open}
+                          setOpen={setOpen}
+                          handleDelete={deleteHandle}
+                          {...notedata}
+                        />
+                      )}
+                      <br></br>
+                    </div>
                   </Card.Content>
                 </Card>
               </Grid.Column>
