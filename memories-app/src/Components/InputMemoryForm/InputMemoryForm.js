@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./InputMemoryForm.css";
 import ImageUpload from "./ImageUpload";
 import { storage, firestore } from "../../firebase_conf";
@@ -10,6 +10,9 @@ import HomePage from "../../Pages/Home/HomePage";
 import { useNavigate } from "react-router-dom";
 import { IoMdPhotos } from "react-icons";
 import { MdLocationOn } from "react-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import Autocomplete from 'react-google-autocomplete';
 
 function InputMemoryForm() {
   const navigate = useNavigate();
@@ -21,8 +24,8 @@ function InputMemoryForm() {
     image: null,
   });
 
-  const [image, setImage] = useState();
 
+  const [image, setImage] = useState();
   function HandleChange(e) {
     e.preventDefault();
     const { name, value } = e.target;
@@ -30,6 +33,7 @@ function InputMemoryForm() {
       return { ...prev, [name]: value };
     });
   }
+  // function to show image uploaded successfully
   const showToastMessage = () => {
     toast.success("Success Notification !", {
       position: toast.POSITION.TOP_CENTER,
@@ -39,6 +43,8 @@ function InputMemoryForm() {
     // 👇️ navigate programmatically
     navigate("/");
   };
+
+  // function to store image and all form data
   function NoteUpload(e) {
     e.preventDefault();
 
@@ -64,22 +70,24 @@ function InputMemoryForm() {
       },
       //started upload data process to firestorage
       async () => {
-        const imagefile = ref(storage, `/images/${image.name}`);
+        const imagefile = ref(storage, `/images/${image.name}`); //  fetch the imageUrl from firebase storage.
         getDownloadURL(imagefile).then((imageUrl) => {
-          setDoc(doc(firestore, "NotesData", formData.Title), {
+          setDoc(doc(firestore, "NotesData", formData.Title), // function to store all data into firebase firestore by assigning the document name with respect to memories title.
+          {
             Title: formData.Title,
             Location: formData.Location,
             Date: formData.Date,
             Caption: formData.Caption,
             image: imageUrl,
           });
-          toast.success("Successly Uploaded !", {
+          toast.success("Successfully Uploaded !", //Receive successfully uploaded message
+          {
             position: toast.POSITION.TOP_RIGHT,
           });
           console.log("Setting setDoc");
         });
 
-        // rest form
+        // set the data again
         setFromData({
           Title: "",
           Location: "",
@@ -110,16 +118,21 @@ function InputMemoryForm() {
               onChange={HandleChange}
               placeholder="Title"
               name="Title"
+              maxLength={30}
               value={formData.Title}
             ></input>
             <br></br>
-            <input
-              type="location"
-              onChange={HandleChange}
-              placeholder="location"
-              name="Location"
-              value={formData.Location}
-            ></input>
+            
+            <Autocomplete
+              onPlaceSelected={(place) => {
+                console.log(place.formatted_address); // Location suggestion will appear automatically
+                setFromData((prev) => {
+                  return { ...prev, ["Location"]: place.formatted_address };
+                });
+              }}
+              types={['(cities)']}
+              componentRestrictions={{country: "us"}}
+            />
             <br></br>
             <input
               type="date"
@@ -135,6 +148,7 @@ function InputMemoryForm() {
               placeholder="Caption"
               name="Caption"
               value={formData.Caption}
+              maxLength = {150}
             ></textarea>
             <br></br>
 

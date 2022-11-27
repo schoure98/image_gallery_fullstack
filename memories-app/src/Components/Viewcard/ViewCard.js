@@ -12,10 +12,9 @@ const ViewCard = ({
   open,
   id,
   handleDelete,
-    }) => {
- 
-
+}) => {
   return (
+    // View modal will open with details.
     <Modal
       style={{
         height: "400px",
@@ -37,12 +36,11 @@ const ViewCard = ({
           style={{
             borderRadius: "0",
             backgroundColor: "white",
-            zIndex: "1px"
+            zIndex: "1px",
           }}
           wrapped
         />
         <Modal.Description>
-            {console.log(Title, Location)}
           <Header>
             <h3>Title : {Title} </h3>
           </Header>
@@ -64,7 +62,9 @@ const ViewCard = ({
           labelPosition="right"
           icon="checkmark"
           onClick={() => handleDelete(id)}
-        > Delete
+        >
+          {" "}
+          Delete
         </Button>
       </Modal.Actions>
     </Modal>

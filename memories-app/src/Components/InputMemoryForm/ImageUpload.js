@@ -20,6 +20,7 @@ const ImageUpload = ({ image, setImage }) => {
     fileReader.readAsDataURL(image);
   }, [image]);
 
+    // function for selecting updated image file
   function selectedImageHandler(event) {
     let selectedImage;
     if (event.target.files && event.target.files.length === 1) {
@@ -27,13 +28,13 @@ const ImageUpload = ({ image, setImage }) => {
       setImage(selectedImage);
     }
   }
+  // function for image file selection 
   function imageSelectHandler(event) {
     imageFileRef.current.click();
     let selectedImage;
     if (event.target.files && event.target.files.length === 1) {
       selectedImage = event.target.files[0];
       setImage(selectedImage);
-      console.log("pickedImageHandler");
     }
   }
 
@@ -43,10 +44,10 @@ const ImageUpload = ({ image, setImage }) => {
         ref={imageFileRef}
         style={{ display: "none" }}
         type="file"
-        accept=".jpg,.png,.jpeg"
+        accept=".jpg,.png,.jpeg" // Only can upload '.jpg, .png, .jpeg' 
         onChange={selectedImageHandler}
       />
-
+      
       <div className={`image-upload ${"center"}`}>
         <div className="image-upload__preview">
           <div>{imagePreview && <img src={imagePreview} alt="preview" />}</div>
