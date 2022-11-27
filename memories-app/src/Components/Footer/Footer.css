@@ -1,25 +1,26 @@
 /* Footer Styling */
 footer {
-    width: 100%;
-    bottom: 0%;
-    text-align: center;
-    background-color: #0A5C8F;
-    color: white;
-    font-weight: 600;
-  }
-  footer > p{
-    padding-top: 1.5%;
-    padding-bottom: 1.5%;
-  }
-  footer > p > a {
-    color: white;
-    text-decoration: none;
-  }
-  footer > p > span {
-    padding-left: 1.2%;
-    padding-right: 1.2%;
-  }
-  footer > p > a:hover {
-    color: black;
-    cursor: pointer;
-  }
+  width: 100%;
+  bottom: 0%;
+  text-align: center;
+  background-color: #0A5C8F;
+  color: white;
+  font-weight: 600;
+  position:fixed;
+}
+footer > p{
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
+}
+footer > p > a {
+  color: white;
+  text-decoration: none;
+}
+footer > p > span {
+  padding-left: 1.2%;
+  padding-right: 1.2%;
+}
+footer > p > a:hover {
+  color: black;
+  cursor: pointer;
+}
