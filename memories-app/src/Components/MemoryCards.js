@@ -3,7 +3,7 @@ import { storage, firestore } from "../firebase_conf";
 import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
-import ViewCard from "./Viewcard/ViewCard";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const MemoryCard = () => {
   const [formdata, setFormdata] = useState([]);
@@ -33,13 +33,13 @@ const MemoryCard = () => {
     };
   }, []);
 
-  // function to View the memory card with all details 
+  // function to View the memory card with all details
   const handleview = (cardItem) => {
     setOpen(true);
     setNotedate(cardItem);
   };
 
-  // function for deletion function 
+  // function for deletion function
   const deleteHandle = async (id) => {
     if (window.confirm("Are you sure to Delete the Card ?")) {
       try {
@@ -73,38 +73,25 @@ const MemoryCard = () => {
                     <Card.Header
                       style={{
                         marginTop: "10px",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
                       }}
                     >
                       {cardItem.Title}
+                      <br />
                     </Card.Header>
-                  </Card.Content>
-                  <Card.Content extra>
-                    <div
+                    <Card.Meta
                       style={{
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
+                        marginTop: "10px",
                       }}
                     >
-                      <Button
-                        color="purple"
-                        onClick={() => handleview(cardItem)}
-                      >
-                        View
-                      </Button>
-                      {open && (
-                        <ViewCard
-                          open={open}
-                          setOpen={setOpen}
-                          handleDelete={deleteHandle}
-                          {...notedata}
-                        />
-                      )}
-                      <br></br>
-                    </div>
+                      <span className="date">Date: {cardItem.Date}</span>
+                      <br />
+                      <span className="location">
+                        Location: {cardItem.Location}
+                      </span>
+                    </Card.Meta>
+                    <Card.Description>
+                      Description: {cardItem.Caption}
+                    </Card.Description>
                   </Card.Content>
                 </Card>
               </Grid.Column>
