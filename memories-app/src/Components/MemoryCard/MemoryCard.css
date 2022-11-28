@@ -6,6 +6,7 @@ div.ui card {
   width: 100% !important;
   min-height: 100% !important;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  margin-bottom: 3em;
 }
 
 

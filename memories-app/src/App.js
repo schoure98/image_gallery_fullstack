@@ -6,7 +6,7 @@ import { BrowserRouter } from "react-router-dom";
 import { Route, Routes, Navigate } from "react-router-dom";
 import HomePage from "./Pages/Home/HomePage";
 import InputMemory from "./Pages/InputMemory/InputMemory";
-import MemoryCard from "./Components/MemoryCards";
+import ImageCards from "./Components/MemoryCard/ImageCards";
 import SearchCard from "./Components/SearchBar/SearchCard";
 
 function App() {
@@ -16,7 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route path="/inputMemory" element={<InputMemory />} />
-        <Route path="/memoryCard" element={<MemoryCard />} />
+        <Route path="/memoryCard" element={<ImageCards />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/searchCard" element={<SearchCard />} />
       </Routes>
