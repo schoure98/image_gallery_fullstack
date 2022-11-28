@@ -26,7 +26,7 @@ export default function Welcome() {
                 forever!
               </h4>
               <Link
-                to="/memoryCard"
+                to="/album"
                 className="btn btn-outline-light btn-lg gallery"
                 role="button"
               >
