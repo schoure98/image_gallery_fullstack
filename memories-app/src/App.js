@@ -16,9 +16,9 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route path="/inputMemory" element={<InputMemory />} />
-        <Route path="/memoryCard" element={<ImageCards />} />
+        <Route path="/album" element={<ImageCards />} />
         <Route path="*" element={<Navigate to="/" />} />
-        <Route path="/searchCard" element={<SearchCard />} />
+        <Route path="/search" element={<SearchCard />} />
       </Routes>
       <Footer />
     </BrowserRouter>

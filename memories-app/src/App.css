@@ -15,7 +15,7 @@ header {
   top: 0;
 }
 */
-
+/*Logo in navigation bar*/
 .logo {
     max-height: 100px;
     margin-top: -9%;
@@ -28,7 +28,7 @@ header {
   color: #0A5C8F !important;
 
 }
-
+/*welcome component on homepage*/
 .welcome {
   margin-top:0 !important;
 }
@@ -37,6 +37,7 @@ header {
   margin-top: 4.5%;
   padding: 3%;
 }
+/*animation to the welcome heading*/
 .animation-charcter
 {
    text-transform: uppercase;
@@ -65,22 +66,22 @@ header {
   }
 }
 
+/*Quote on the welcome section*/
 .quote {
   font-size: 20px;
   padding-right: 8em;
   padding-left: 8em;
   letter-spacing: 1px; 
 }
-
+/*Call to action button*/
 .gallery {
   width: 200px;
   margin-top: 5%;
 }
-
 .btn {
   margin-top: 4% !important;
 }
-
+/*media quires for responsiveness*/
 @media (max-width: 600px) {
   .quote {
     font-size: 20px;

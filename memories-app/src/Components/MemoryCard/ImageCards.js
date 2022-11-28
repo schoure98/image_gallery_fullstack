@@ -35,6 +35,8 @@ const MemoryCard = () => {
   }, []);
 
   return (
+    // card components to fetch the data from database
+
     <Container>
       <Card.Group>
         <Grid columns="three" stackable>

@@ -1,3 +1,4 @@
+/* Header in About Section */
 .about {
   padding-top: 4%;
   text-align: center;
@@ -5,7 +6,6 @@
   font-family: 'Roboto';
   color: #0A5C8F;
   text-decoration: underline;
-  
 }
 .flex-container {
   display: flex;
@@ -14,12 +14,7 @@
 .flex-container > div {
   margin: auto;
 }
-
-@media (max-width: 800px) {
-  .flex-container {
-    flex-direction: column;
-  }
-}
+/*Developer cards*/
 .card-component {
   width: 450px;
   margin:auto;
@@ -30,17 +25,18 @@
   border: 1px dotted  #0A5C8F;
   
 }
-
-
+/*Icons section used in developer cards*/
 .icons{
   text-align: center;
 }
+/*LinkedIn and Github icons*/
 .icon {
   margin-right: 5%;
   font-size: 30px;
   margin-top:2%;
   margin-bottom: 2%;
 }
+/*card content*/
 .card-title {
   font-size: 20px;
 }
@@ -56,10 +52,16 @@ p.card-text{
   max-width: 60%;
   margin: auto;
 }
-
+/*Contact button in the card*/
 #contact {
   width: 200px;
   background-color: #0A5C8F !important;
   border: none;
   padding: 3%;
+}
+/*Responsive Media queries*/
+@media (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
 }

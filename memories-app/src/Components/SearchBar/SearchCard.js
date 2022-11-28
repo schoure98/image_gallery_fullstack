@@ -163,6 +163,13 @@ const SearchCard = () => {
                 ))}
             </Grid>
           </Card.Group>
+          <div>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+      </div>
         </Container>
       </div>
     </div>

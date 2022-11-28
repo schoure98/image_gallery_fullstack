@@ -1,28 +1,22 @@
+/*!important is used to overwrite thedefault styling of semantic ui elements*/
 div.ui card {
   text-align: justify !important;
 }
-
 .ui.card {
   width: 100% !important;
   min-height: 100% !important;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
   margin-bottom: 3em;
 }
-
-
 .ui.card > content {
   padding-bottom: 20px !important;
   padding: 2em 1em !important;
   font-family: 'Roboto' !important;
 }
-
-
-
 .ui.medium.image {
   width: 100% !important;
   min-height: 300px !important;
 }
-
 .header { 
   padding-top: 1.5em;
   font-family: 'Roboto' !important;
@@ -39,6 +33,7 @@ div.ui card {
 svg {
   color: black;
 }
+/*Adding media queries for responsiveness*/
 @media (max-width: 600px) {
     .ui.container {
       flex-direction: column;

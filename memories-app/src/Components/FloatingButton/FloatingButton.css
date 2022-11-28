@@ -22,6 +22,7 @@
 .my-float{
 	margin-top:22px;
 }
+/*Bounce animation for the button*/
 @keyframes bounce {
   from {
       transform: translate3d(0, 0, 0);
@@ -30,7 +31,7 @@
       transform: translate3d(0, -50px, 0);
   }
 }
-/* Prefix Support for floating button*/      
+/*Prefix Support for floating button*/      
 float {
   -webkit-animation-name: bounce;
   -webkit-animation-duration: 0.5s;
