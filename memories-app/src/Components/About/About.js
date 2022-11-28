@@ -1,7 +1,7 @@
 import React from "react";
-import "../Components/About.css";
-import dev1 from '../Components/dev1.png'
-import dev2 from '../Components/dev2.png'
+import "../../Components/About/About.css";
+import dev1 from '../../Components/dev1.png'
+import dev2 from '../../Components/dev2.png'
 import {
   MDBCard,
   MDBCardBody,

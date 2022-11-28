@@ -1,12 +1,12 @@
 import React from "react";
-import MemoryCard from "../../Components/MemoryCard";
+import ImageCards from "../../Components/MemoryCard/ImageCards";
 import SearchBar from "../../Components/SearchBar/SearchBar";
 
 const Memories = () => {
   return (
     <div>
       <SearchBar />
-      <MemoryCard />
+      <ImageCards />
     </div>
   );
 };

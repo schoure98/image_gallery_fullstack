@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { storage, firestore } from "../firebase_conf";
+import { storage, firestore } from "../../firebase_conf";
 import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "../Components/MemoryCard.css";
+import "../../Components/MemoryCard/MemoryCard.css";
 import { ImLocation } from "react-icons/im";
 import { MdDateRange } from "react-icons/md";
 
