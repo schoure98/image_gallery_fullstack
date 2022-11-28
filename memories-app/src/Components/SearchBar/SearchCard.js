@@ -110,34 +110,25 @@ const SearchCard = () => {
       <div className="cardDisplay">
         <Container>
           <Card.Group>
-            <Grid columns="three" stackable>
+            <Grid columns="3" stackable>
               {formdata &&
                 formdata.map((cardItem) => (
                   <Grid.Column>
                     <Card
                       key={cardItem.id}
-                      style={{ width: "660rem", height: "auto" }}
+                      style={{ width: "760rem", height: "auto" }}
                     >
                       <Card.Content>
                         <Image
                           src={cardItem.image}
-                          size="large"
+                          size="big"
                           style={{
-                            height: "150px",
-                            Width: "650px",
+                            height: "350px",
+                            Width: "700px",
                             borderRadius: "0%",
                           }}
                         />
-                        <Card.Header
-                          style={{
-                            marginTop: "10px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                          }}
-                        >
-                          {cardItem.Title}
-                        </Card.Header>
+                        
                       </Card.Content>
                       <Card.Content extra>
                         <div

@@ -49,7 +49,7 @@ const ViewCard = ({
     // View modal will open with details.
     <Modal
       style={{
-        height: "350px",
+        height: "480px",
         marginTop: "10%",
         marginLeft: "20%",
         marginRight: "0%",

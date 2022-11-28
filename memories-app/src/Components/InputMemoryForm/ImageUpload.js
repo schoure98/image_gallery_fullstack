@@ -68,7 +68,7 @@ const ImageUpload = ({ image, setImage }) => {
           {imagePreview && (
             <div className="center">
               <MdModeEdit
-                className="icon"
+                className="iconEdit"
                 onClick={imageSelectHandler}
               ></MdModeEdit>
             </div>

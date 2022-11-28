@@ -12,6 +12,7 @@
 .icon2{
   height: 40px;
   width: 40px;
+  color: azure;
 }
 
 
@@ -33,9 +34,10 @@
   font-size: 50px;
   
 }
-.icon{
+.iconEdit{
   height: 35px;
   width: 35px;
+  color:aliceblue;
 }
 
 .image-upload-button:hover {
