@@ -39,6 +39,7 @@ const ImageUpload = ({ image, setImage }) => {
   }
 
   return (
+    // Image container
     <div className="user-note-collection-main cent">
       <input
         ref={imageFileRef}
