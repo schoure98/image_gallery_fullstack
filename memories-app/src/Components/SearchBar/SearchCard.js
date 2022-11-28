@@ -131,9 +131,7 @@ const SearchCard = () => {
                         <Card.Header
                           style={{
                             marginTop: "10px",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
+                            
                           }}
                         >
                           {cardItem.Title}
