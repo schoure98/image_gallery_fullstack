@@ -1,5 +1,7 @@
 import React from "react";
 import "../Components/About.css";
+import dev1 from '../Components/dev1.png'
+import dev2 from '../Components/dev2.png'
 import {
   MDBCard,
   MDBCardBody,
@@ -14,13 +16,13 @@ import { FaGithub } from "react-icons/fa";
 function About() {
   return (
     <div>
-         <h4 class="about">About the Developers</h4>
+         <h4 class="about">Our Team</h4>
     <div class="flex-container">
       <div>
-        <MDBCard class="card">
+        <MDBCard class="card-component">
           <MDBCardImage
             class="developer-img"
-            src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
+            src={dev1}
             alt="dev image"
           />
           <MDBCardBody>
@@ -45,18 +47,19 @@ function About() {
       </div>
 
       <div>
-        <MDBCard class="card">
+        <MDBCard class="card-component">
           <MDBCardImage
             class="developer-img"
-            src="https://mdbootstrap.com/img/new/standard/nature/184.webp"
+            src={dev2}
             alt="dev image"
           />
           <MDBCardBody>
             <MDBCardTitle>Rutuja Padgilwar</MDBCardTitle>
-            <MDBCardText class="info">
+            <MDBCardText>
               MS Computer Science
               <MDBCardText>Portland State Univeristy</MDBCardText>
             </MDBCardText>
+           
             <MDBCardText class="icons">
               <a href="https://www.linkedin.com/in/rutuja-padgilwar/">
                 <FaLinkedin class="icon" />
