@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import background from "../background.jpeg";
+import background from "../bg.jpg";
 
 export default function Welcome() {
   return (
