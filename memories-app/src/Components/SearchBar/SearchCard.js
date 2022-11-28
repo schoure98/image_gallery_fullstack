@@ -116,7 +116,7 @@ const SearchCard = () => {
                   <Grid.Column>
                     <Card
                       key={cardItem.id}
-                      style={{ width: "60rem", height: "auto" }}
+                      style={{ width: "660rem", height: "auto" }}
                     >
                       <Card.Content>
                         <Image
@@ -124,14 +124,16 @@ const SearchCard = () => {
                           size="large"
                           style={{
                             height: "150px",
-                            Width: "150px",
+                            Width: "650px",
                             borderRadius: "0%",
                           }}
                         />
                         <Card.Header
                           style={{
                             marginTop: "10px",
-                            
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
                           }}
                         >
                           {cardItem.Title}
@@ -175,5 +177,4 @@ const SearchCard = () => {
     </div>
   );
 };
-
 export default SearchCard;
