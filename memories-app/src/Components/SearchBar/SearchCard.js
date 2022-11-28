@@ -5,15 +5,18 @@ import { Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { IoMdSearch } from "react-icons/io";
 import "./SearchCard.css";
 import ViewCard from "../Viewcard/ViewCard";
-import Autocomplete from 'react-google-autocomplete';
-
+import Autocomplete from "react-google-autocomplete";
+import { doc } from "firebase/firestore";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
-  doc,
   getDocs,
   query,
   where,
   collection,
   deleteDoc,
+  updateDoc,
+  setDoc,
 } from "firebase/firestore";
 
 const SearchCard = () => {
@@ -47,27 +50,59 @@ const SearchCard = () => {
       console.log("Error", e);
     }
   };
-  // deletion of card
-  const deleteHandle = async (id) => {
+  // function for deletion function 
+  const deleteHandle = async (id, Title) => {
     if (window.confirm("Are you sure to Delete the Card ?")) {
       try {
         setOpen(false);
-        await deleteDoc(doc(firestore, "NotesData", id));
+        await deleteDoc(doc(firestore, "NotesData", Title));
         setFormdata(formdata.filter((notedata) => notedata.id !== id));
       } catch (err) {
         console.log(err);
       }
     }
   };
+
+  // updating Card
+  const updateHandle = async (id, updateFormData, image, Title) => {
+    console.log(updateFormData);
+    if (window.confirm("Are you sure to Update the Card ?")) {
+      try {
+        setOpen(false);
+        await deleteDoc(doc(firestore, "NotesData", Title));
+        setFormdata(formdata.filter((notedata) => notedata.id !== id));
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    setDoc(
+      doc(firestore, "NotesData", updateFormData.Title), // function to store all data into firebase firestore by assigning the document name with respect to memories title.
+      {
+        Title: updateFormData.Title,
+        Location: updateFormData.Location,
+        Date: updateFormData.Date,
+        Caption: updateFormData.Caption,
+        image: image,
+      }
+    );
+    toast.success(
+      "Successfully Updated !", //Receive successfully uploaded message
+      {
+        position: toast.POSITION.TOP_RIGHT,
+      }
+    );
+    console.log("updated setDoc");
+  };
   return (
     <div>
       <div className="form">
         <Autocomplete
+          className="Searchinput"
           onPlaceSelected={(place) => {
             setSearchdata(place.formatted_address); // set Location suggestion that appeared automatically
           }}
-          types={['(cities)']}
-          componentRestrictions={{country: "us"}}
+          types={["(cities)"]}
+          componentRestrictions={{ country: "us" }}
         />
         <IoMdSearch className="icon" onClick={SearchvalueHandle}></IoMdSearch>
       </div>
@@ -125,6 +160,7 @@ const SearchCard = () => {
                               open={open}
                               setOpen={setOpen}
                               handleDelete={deleteHandle}
+                              handleUpdate={updateHandle}
                               {...notedata}
                             />
                           )}

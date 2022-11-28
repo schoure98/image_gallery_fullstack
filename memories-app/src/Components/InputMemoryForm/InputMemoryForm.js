@@ -112,8 +112,8 @@ function InputMemoryForm() {
         </div>
 
         <div className="form-container collection-container">
-          <form action="#">
-            <input
+          <form className="formAction">
+            <input className="inputCard"
               type="text"
               onChange={HandleChange}
               placeholder="Title"
@@ -123,7 +123,7 @@ function InputMemoryForm() {
             ></input>
             <br></br>
             
-            <Autocomplete
+            <Autocomplete className="inputCard"
               onPlaceSelected={(place) => {
                 console.log(place.formatted_address); // Location suggestion will appear automatically
                 setFromData((prev) => {
@@ -134,7 +134,7 @@ function InputMemoryForm() {
               componentRestrictions={{country: "us"}}
             />
             <br></br>
-            <input
+            <input className="inputCard"
               type="date"
               onChange={HandleChange}
               placeholder="date"
