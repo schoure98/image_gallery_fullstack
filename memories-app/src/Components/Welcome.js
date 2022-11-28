@@ -7,22 +7,15 @@ export default function Welcome() {
     <header style={{ paddingLeft: 0 }}>
       <div
         className="p-5 text-center bg-image welcome"
-        style={{ backgroundImage: `url(${background})`, height: 600, opacity:0.9 }}
+        style={{ backgroundImage: `url(${background})`, height: 550, opacity:0.9 }}
       >
         <div className="mask" style={{ backgroundColor: "rgba(0, 0, 0, 0.6)" }}>
           <div className="d-flex justify-content-center align-items-center h-100">
             <div className="text-white">
               <h1 className="animation-charcter mb-3">Welcome to Memories</h1>
               <h4 className="mb-3 quote">
-                Our application is about going back to memories! Living in the
-                moment is important, but there are moments where we just want to
-                go back and live it once again. And we can do that with great,
-                awesome pictures!
-                <br />
-                <br />
-                "Life is shorter, live it. Love is rare, grab it. Anger is bad,
-                dump it. Fear is awful, face it. Memories are sweet, cherish
-                it.”
+                Our application is about travel memories. Being new to the city and country we are exploring new places and destinations every weekend!
+                We are trying to gather the moments, to cherish forever!
               </h4>
               <Link
                 to="/memoryCard"

@@ -4,6 +4,9 @@ import { Modal, Button, Card, Grid, Container, Image } from "semantic-ui-react";
 import { useNavigate } from "react-router-dom";
 import { collection, doc, deleteDoc, onSnapshot } from "firebase/firestore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "../Components/MemoryCard.css";
+import { ImLocation } from "react-icons/im";
+import { MdDateRange } from "react-icons/md";
 
 const MemoryCard = () => {
   const [formdata, setFormdata] = useState([]);
@@ -83,15 +86,15 @@ const MemoryCard = () => {
                         marginTop: "10px",
                       }}
                     >
-                      <span className="date">Date: {cardItem.Date}</span>
+                      <span className="date">
+                        <MdDateRange /> {cardItem.Date}
+                      </span>
                       <br />
                       <span className="location">
-                        Location: {cardItem.Location}
+                        <ImLocation /> {cardItem.Location}
                       </span>
                     </Card.Meta>
-                    <Card.Description>
-                      Description: {cardItem.Caption}
-                    </Card.Description>
+                    <Card.Description>{cardItem.Caption}</Card.Description>
                   </Card.Content>
                 </Card>
               </Grid.Column>

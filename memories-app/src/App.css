@@ -34,7 +34,7 @@ header {
 }
 
 .mask {
-  margin-top: 2%;
+  margin-top: 4.5%;
   padding: 3%;
 }
 .animation-charcter
@@ -67,8 +67,9 @@ header {
 
 .quote {
   font-size: 20px;
-  padding-right: 40px;
-  padding-left: 40px;
+  padding-right: 8em;
+  padding-left: 8em;
+  letter-spacing: 1px; 
 }
 
 .gallery {
@@ -76,5 +77,16 @@ header {
   margin-top: 5%;
 }
 
+.btn {
+  margin-top: 4% !important;
+}
+
+@media (max-width: 600px) {
+  .quote {
+    font-size: 20px;
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+}
 
 
