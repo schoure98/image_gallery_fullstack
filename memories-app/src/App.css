@@ -84,9 +84,9 @@ header {
 /*media quires for responsiveness*/
 @media (max-width: 600px) {
   .quote {
-    font-size: 20px;
-    padding-right: 2em;
-    padding-left: 2em;
+    font-size: 19px;
+    padding-right: 1em;
+    padding-left: 1em;
   }
 }
 
