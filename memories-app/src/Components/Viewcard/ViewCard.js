@@ -52,7 +52,7 @@ const ViewCard = ({
         height: "480px",
         marginTop: "10%",
         marginLeft: "20%",
-        marginRight: "0%",
+        marginRight: "20%",
       }}
       size={"small"}
       onClose={() => setOpen(false)}
@@ -114,10 +114,11 @@ const ViewCard = ({
         open={updateOpen}
         size="mini"
         style={{
-          height: "400px",
+          height: "430px",
           marginTop: "10%",
-          marginLeft: "35%",
-          marginRight: "60%",
+          marginLeft: "30%",
+          marginRight: "70%",
+          floated:"center"
         }}
       >
 
@@ -172,6 +173,7 @@ const ViewCard = ({
             color="green"
             icon="check"
             content="Update"
+            floated="left"
             onClick={() => handleUpdate(id,updateFormData, image, Title)}
           />
         </Modal.Actions>
