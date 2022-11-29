@@ -63,5 +63,6 @@ p.card-text{
 @media (max-width: 800px) {
   .flex-container {
     flex-direction: column;
+    width: 80%;
   }
 }
