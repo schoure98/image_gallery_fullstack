@@ -7,7 +7,7 @@ memories-app: This folder contains the reactjs code of the application.
 
 Please check the README.md file of memories-app to run this file in your local environment. 
 
-Deployment link of the application: 
+Deployment link of the application: https://digital-travel-memories.netlify.app/ 
 
 
 
