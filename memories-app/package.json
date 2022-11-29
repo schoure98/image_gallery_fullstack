@@ -1,6 +1,7 @@
 {
   "name": "memories-app",
   "version": "0.1.0",
+  "homepage": "https://digital-travel-memories1.netlify.app/",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.1",
